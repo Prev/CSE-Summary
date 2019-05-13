@@ -70,11 +70,11 @@ add $t0, $s1, $s2
 | constant | -2<sup>15</sup> ~ 2<sup>15</sup> - 1 |
 | address | offset added to base address in `rs`  |
 
-```asm
+```c
 lw $t0, 32($s2)
 sw $t0, 16($s3)
 addi $s3, $s3, 4
-beq $s1, $s2 label # 이때 destination(target address)은 `PC + offset * 4` 가 된다
+beq $s1, $s2 label // 이때 destination(target address)은 `PC + offset * 4` 가 된다
 ```
 
 - **J-format**
