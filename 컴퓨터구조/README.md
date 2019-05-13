@@ -46,34 +46,41 @@
 
 ![MIPS formats](images/MIPS-formats.png)
 
-- **R-format Instructions**
-    - 각 포맷이 의미하는 것
-        - `op`: operation code (opcode)
-        - `rs`: first source register number
-        - `rt`: second source register number
-        - `rd`: destination register number
-        - `shamt`: shift amount (00000 for now)
-        - `funct`: function code (extends opcode)
-    - 예시
-        - `add $t0, $s1, $s2`
-    - 3주소 명령어라고도 함
+- **R-format**
+
+| 필드 | 의미                              |
+| -- | --------------------------------- |
+| op | operation code (opcode)           |
+| rs | first source register number      |
+| rt | second source register number     |
+| rd | destination register number       |
+| shamt | shift amount (00000 for now)   |
+| funct | function code (extends opcode) |
+
+```asm
+add $t0, $s1, $s2
+```
+
 - **I-format**
-    - 각 포맷이 의미하는 것
-        - `rs`: base address
-        - `rt`: destination or source register number
-        - `constant`: -2^15 ~ 2^15 - 1
-        - `address`: offset added to base address in `rs`
-    - 예시
-        - `lw $t0, 32($s2)`
-        - `sw $t0, 16($s3)`
-        - `addi $s3, $s3, 4`
-        - `beq $s1, $s2 label`
-            - 이 때 destination(target address)은 `PC + offset * 4` 가 된다
-    - 2주소 명령어라고도 함
+
+| 필드 | 의미                              |
+| -- | --------------------------------- |
+| rs | base address                           |
+| rt | destination or source register number |
+| constant | -2<sup>15</sup> ~ 2<sup>15</sup> - 1 |
+| address | offset added to base address in `rs`  |
+
+```asm
+lw $t0, 32($s2)
+sw $t0, 16($s3)
+addi $s3, $s3, 4
+beq $s1, $s2 label # 이때 destination(target address)은 `PC + offset * 4` 가 된다
+```
+
 - **J-format**
     - Jump instruction에 사용
     - Target address = `address * 4`
-        - Boundary: 256MB(2^28) → Code segment의 최대 크기
+        - Boundary: 256MB(2<sup>28</sup>) → Code segment의 최대 크기
 - **Operand Types**
     - Word: 32bits
     - Halfword: 16bits
@@ -176,20 +183,20 @@
     - Direct Map Cache: 같은 index를 가진 주소끼리 하나의 block을 가르킴
     - 주소마다 캐시 메모리 내 있을 수 있는 장소 고정
     - ⚠️ 같은 index를 가지는 주소가 인접하여 access될 때 cache miss가 지속적으로 발생할 수 있다.
-    - Cache size가 `2^8`이고 block size가 `2^4`라면 총 Index의 길이: 4 (`2^8 / 2^4 = 2^4`), block 수 16개
+    - Cache size가 2<sup>8</sup>이고 block size가 2<sup>4</sup>라면 총 Index의 길이: 4 (2<sup>8</sup> / 2<sup>4</sup> = 2<sup>4</sup>), block 수 16개
 
 ![Direct Map Cache](images/direct-map-cache.jpg)
 
 - **Two-Way Set-Associative Cache**
     - Cache를 2개 set으로 쪼개어 같은 index를 가진 주소가 2 군데의 block에 위치할 수 있는 구조
-    - Cache size가 `2^8`이고 block size가 `2^4`라면 총 Index의 길이: 3 (`2^8 / 2 / 2^4 = 2^3`), set별 block 수 8개
+    - Cache size가 2<sup>8</sup>이고 block size가 2<sup>4</sup>라면 총 Index의 길이: 3 (2<sup>8</sup>/ 2 / 2<sup>4</sup> = 2<sup>3</sup>), set별 block 수 8개
 
 ![Two-way Set-Associative Cache](images/two-way-sa-cache.jpg)
 
 - **Fully-Associative Cache**
     - `Index`필드가 사라지며, `offset`을 제외한 나머지 주소가 모두 `tag`가 됨
     - ⚠️ Hit rate가 높아지지만 하드웨어 설계가 더 복잡해짐
-        - 12bits address, cache size `2^8`, block size `2^4`이면 16-way가 fully-associative
+        - 12bits address, cache size 2<sup>8</sup>, block size 2<sup>4</sup>이면 16-way가 fully-associative
 
 ![Fully-Associative Cache](images/fully-a-cache.png)
 

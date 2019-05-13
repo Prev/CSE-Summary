@@ -37,8 +37,8 @@
 ### ✔️ 이진 트리 (Binary Tree)
 
 - 노드의 차수가 2인 트리
-    - 한 레벨의 최대 노드 개수는 `2^(i-1)`
-- 완전 이진트리 (complete binary tree): 마지막 level을 제외하고 모든 level의 노드가 `2^(i-1)` 인 것; 모두 채워진 것
+    - 한 레벨의 최대 노드 개수는 2<sup>i-1</sup>
+- 완전 이진트리 (complete binary tree): 마지막 level을 제외하고 모든 level의 노드가 2<sup>i-1</sup> 인 것; 모두 채워진 것
 - **트리 순회 (Traversal)**
     - **In-order:** 왼쪽 노드 - 자신 - 오른쪽 노드 순으로 탐색
     - **Pre-order:** 자신 - 왼쪽 노드 - 오른쪽 노드 순으로 탐색
@@ -130,7 +130,7 @@ void percolateDown(int[] A, int i, int N) {
     - 방법 2: Open addressing
         - 이미 레코드가 사용 중이면 다른 빈 공간을 사용하는 방식
         - Linear probing: 순차적으로 다음 빈 레코드에 삽입
-        - Quadratic probing: 키를 `i^2` 순으로 증가시켜 빈 공간 검색
+        - Quadratic probing: 키를 i<sup>2</sup> 순으로 증가시켜 빈 공간 검색
     - 방법 3: Extendible hashing
         - Directory 구조로 해시 테이블을 구성하는 방식
 
@@ -144,23 +144,23 @@ void percolateDown(int[] A, int i, int N) {
     - 서로 인접한 2개의 레코드를 비교하여 크기가 순서대로 되어 있지 않으면 swap
     - 1회전시 d[1]와 d[2], d[3]와 d[4], ... d[n-1]와 d[n]를 비교한다
     - k회전시 n-k+1번 까지만 비교를 수행하면 된다
-    - `O(n^2)`
+    - O(n<sup>2</sup>)
 - **선택 정렬 (Selection Sort)**
     - 해당 순서에 원소를 넣을 위치는 이미 정해져 있고, 어떤 원소를 넣을지 선택하는 알고리즘
     - k회전시 k ~ n번째 레코드들을 보아야 한다.
-    - `O(n^2)`
+    - O(n<sup>2</sup>)
 - **삽입 정렬 (Insertion Sort)**
     - 2번째 레코드부터 앞의 레코드들을 보며 자신이 위치해야 할 곳으로 삽입 하면서 정렬한다
     - k번째 레코드는 1~(k-1)번째 레코드들과 비교해야한다
-    - `O(n^2)`
+    - O(n<sup>2</sup>)
 - **합병 정렬 (Merge Sort)**
     - 대표적인 분할 정복(divide and conquer) 방법
     - 원소의 크기가 1이 될 때까지 두개로 분할한 후, 2개의 리스트의 값들을 처음부터 하나씩 비교하여 두 개의 리스트의 값 중에서 더 작은 값을 새로운 리스트(sorted)로 옮긴다.
-    - `O(n^2)`
+    - O(n<sup>2</sup>)
     - ❌ In-place algorithm(제자리 알고리즘)이 아니다; `O(n)`만큼의 새로운 공간 요구
 - **힙 정렬 (Heap Sort)**
     - 배열의 요소로 max heap을 build 하고, 하나씩 요소를 꺼내서 배열의 뒤부터 저장하면 된다. (별도 공간 불필요)
-    - `O(nlog n)`
+    - O(nlog n)
     - ✅ In-place algorithm임
 - **퀵 정렬 (Quick Sort)**
     - 개념
@@ -168,7 +168,7 @@ void percolateDown(int[] A, int i, int N) {
         - 피벗을 제외한 왼쪽 리스트와 오른쪽 리스트 각각에 대해 위 작업을 반복한다.
     - 구현 방법
         - `low` 포인터와 `high` 포인터를 두고, low는 오른쪽으로 이동하다가 피벗보다 큰 요소를 찾으면 멈춘다. high는 왼쪽으로 이동하다가 피벗보다 작은 요소를 찾으면 멈춘다. 두 포인터 모두 멈추면 교환하고, 두 포인터가 엇갈릴 때까지 반복한다.
-    - 평균 시간복잡도: `O(nlog n)`, 최악 시간복잡도: `O(n^2)`
+    - 평균 시간복잡도: O(nlog n), 최악 시간복잡도: O(n<sup>2</sup>)
     - ⚠️ 최악의 경우(Worst Case)
         - 리스트가 잘 나눠지지 않는 경우 (피벗이 최대값, 혹은 최솟값으로 뽑혀서 리스트가 나누어지지 않고 길이만 1씩 줄어드는 경우)
     - ⁉️ In-place algorithm이라고 할 수도 있고, 그렇지 않다고 할 수도 있다
@@ -193,7 +193,7 @@ void percolateDown(int[] A, int i, int N) {
     - 큐에 있는 vertex들을 하나씩 꺼내며 이웃들의 최단경로를 갱신해준다
         - `dist[v] = min(dist[v], dist[u] + edge[u][v])`
     - ❗️큐에서 vertex를 꺼낼 때에는 가장 짧은 최단 경로를 가진 놈을 먼저 꺼내도록 한다
-- 기본 시간복잡도: `O(V^2 + E)`
+- 기본 시간복잡도: O(V<sup>2</sup> + E)
 
 ```js
 dist[source] ← 0
