@@ -2,21 +2,17 @@
 
 ### ✔️ OSI 7계층
 
-1. **물리 계층 (Physical Layer)**
-    - 단위: `bit`
-2. **데이터 링크 계층 (Data Link Layer)**
-    - 단위: `frame`, Physical Address
-    - `HDLC`, `PPP`, `LLC`
-3. **네트워크 계층 (Network Layer)**
-    - 단위: `packet`, Logical Address
-    - `X25`, `IP`
-4. **전송 계층 (Transport Layer)**
-    - 단위: `segment`, Port Address
-    - `TCP`, `UDP`
-5. 세션 계층 (Session Layer)
-    - 이하 단위: `message`, Application-Specific address
-6. 표현 계층 (Presentation Layer)
-7. 응용 계층 (Application Layer)
+
+| 계층 | 이름 | 단위 | 주소 | 예시 |
+|-----|-----|-----|-----|-----|
+| 1 | **물리 계층 (Physical Layer)**        | 비트(bit) |  |
+| 2 | **데이터 링크 계층 (Data Link Layer)**  | 프레임(frame) | Physical | `HDLC`, `PPP`, `LLC` |
+| 3 | **네트워크 계층 (Network Layer)**      | 패킷(packet) | Logical | `X25`, `IP` |
+| 4 | **전송 계층 (Transport Layer)**       | 세그먼트(segment) | Port | `HDLC`, `PPP`, `LLC` |
+| 5 | 세션 계층 (Session Layer)             | 메시지(message) | Application-Specific | |
+| 6 | 표현 계층 (Presentation Layer) | | |
+| 7 | 응용 계층 (Application Layer) | | |
+
 
 ### ✔️ TCP/IP Protocol Suite
 
@@ -27,7 +23,7 @@
 
 
 
-## 물리 계층 (Data Link Layer, #1)
+## 1️⃣ 물리 계층 (Data Link Layer)
 
 ### ✔️ 다중화(Multiplexing)
 
@@ -38,7 +34,9 @@
 - 코드 분할 다중화(CDM)
 
 
-## 데이터 링크 계층 (Data Link Layer, #2)
+
+
+## 2️⃣ 데이터 링크 계층 (Data Link Layer)
 
 ### ✔️ Framing
 
@@ -123,7 +121,7 @@
 
 
 
-## 네트워크 계층 (Network Layer, #3)
+## 3️⃣ 네트워크 계층 (Network Layer)
 
 ### ✔️  Switching
 
@@ -179,7 +177,7 @@
 
 
 
-## 전송 계층 (Transport Layer, #4)
+## 4️⃣ 전송 계층 (Transport Layer)
 
 
 ### ✔️ UDP (User Datagram Protocol)
@@ -228,7 +226,7 @@
 
 
 
-## 응용 계층 (Application Layer, #7)
+## 7️⃣ 응용 계층 (Application Layer)
 
 ### ✔️ 대표적인 응용 계층 프로토콜
 
