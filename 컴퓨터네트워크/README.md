@@ -23,7 +23,7 @@
 
 
 
-## 1️⃣ 물리 계층 (Data Link Layer)
+## 1️⃣ 물리 계층 (Physical Layer)
 
 ### ✔️ 다중화(Multiplexing)
 
