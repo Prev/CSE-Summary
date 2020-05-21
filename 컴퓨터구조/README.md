@@ -6,7 +6,7 @@
 
 - **IC** (Instruction Count)
     - 하드웨어가 실행해야 하는 instuction의 실제 수
-    - 같은 프로그램이라도 달라짐 ISA의 종류나 컴파일러의 역량에 따라 달라짐
+    - 같은 프로그램이라도 달라지며, ISA의 종류나 컴파일러의 역량에 따라서도 달라진다
         - 또한 input data에 따라서도 변함
 - **CPI** (Cycle-per-Instruction)
     - Instruction의 수행 시간으로, instruction의 마다 다름 (일반연산, multiplication, floating)

@@ -102,13 +102,13 @@ struct proc {
         - 규칙 4: 프로세스가 모든 time slice를 전부 사용하면 priority를 감소
         - ⚠️ 너무 많은 프로세스가 존재하면 Starvation 현상 발생 가능 → priority boost를 일정 주기마다 실행해준다 (모든 프로세스의 priorty를 가장 높게 초기화; 규칙 5)
 - **Fair-share 스케줄링**
-    - CPU time의 특정 **비율(지분)**만큼 작업이 수행되도록 보장
+    - CPU time의 특정 비율(지분)만큼 작업이 수행되도록 보장
     - **Lottery scheduling**
         - 확률만큼 ticket을 갖게 한 후 랜덤하게 선택
         - A가 60%, B가 40%의 share를 가지고 있다면 `[A, A, A, B, B]` 의 배열을 만든 후 랜덤하게 하나를 뽑는 방식
         - ⚠️ Sample 수가 작으면 랜덤의 특성상 공정하게 분배가 되지 않는다
     - **Stride Scheduling**
-        - `stride = some-const / tickets`
+        - `stride = some-const / tickets`;
         `pass += stride`
         - 가장 pass가 작은 프로세스 실행
             - ticket이 적은 프로세스는 stride가 커지므로 덜 수행될 것이고, ticket이 많은 프로세스는 stide가 작으므로 더 많이 수행될 것이다
@@ -120,8 +120,8 @@ struct proc {
 - 프로세스가 사용하는 메모리 주소와(virtual address) 하드웨어가 사용하는 메모리 주소(physical address)는 달라야 한다. (프로세스는 주어진 범위 내의 주소만 사용할 수 있어야한다)
 - **Base & Bound 레지스터 사용**
     - 하드웨어 기반으로 RAM에 접근하기 전에 base 레지스터와 bound 레지스터를 이용해서 주소를 전환 (transition) 및 limit 검사를 수행한다
-    - `physical address = virtual address + base`
-    `0 ≤ virtual address < bound`
+    - `physical_address = virtual_address + base`;
+    `0 ≤ virtual_address < bound`
     - PCB에 base & bound 레지스터도 정보도 저장되어야함
     - ⚠️ Internal fragmentation 문제가 존재한다 (free space가 너무 큼)
     - ⚠️ Address space를 여러 개로 나눠 사용할 수 없다 (Code / Data / Stack)
@@ -144,7 +144,7 @@ struct proc {
     - 프로세스 주소를 쪼개는 대신, 물리적 메모리 주소 자체를 고정된 크기로 쪼개어 사용.
     - 이 때 쪼개지는 단위를 **페이지(page)**라 함
     - **페이지 테이블(page table)**
-        - virtual address를 physical address로 치환하기 위한 요소
+        - Virtual address를 physical address로 치환하기 위한 요소
         - 프로세스마다 페이지 테이블을 갖고 있어야 함
         - 페이지 테이블의 요소: `VPN`(Virtual Page Number), `PFN`(Page Frame Number), `Flags`(validation, protection, present, dirty, ...)
         - 가상 메모리 주소(virtual address)는 `VPN`과 `offset`으로 구성
@@ -161,6 +161,7 @@ struct proc {
         - **장점:** 필요한 크기만큼의 page table 구성 가능
         - **단점:** 메모리 transition 시간 증가
         - x86: 4-level로 구성 (32bits의 주소 = 9 bits + 9 bits + 9 bits + 9 bits + 12 bits offsets)
+            - 때문의 페이지의 크기는 2<sup>12</sup> = 4KB 이다.
 
 
 ![Paging](images/mem-paging.png)
@@ -189,7 +190,7 @@ struct proc {
 
 - 한 프로그램에서 병렬적으로(parallellism) 작업을 수행할 수 있도록 운영체제에서 제공하는 API
 - ❗️쓰레드끼리는 메모리를 공유한다
-    - 단 stack은 공유하지 않음 (애초에 stack이 같은건 말이 안되는 것)
+    - 단 stack은 공유하지 않음 (애초에 여러 프로세스가 stack을 공유할 수 없다)
     - 메모리를 공유하니 switch overhead, TLB miss 등이 적어져 성능 이득
     - **⚠️** 쓰레드간 수행 순서에 따라서 **race condition**이 생길 수 있다
 
@@ -200,7 +201,9 @@ struct proc {
 - **임계 구역(Critical Section)**: 한 번의 하나의 프로세스만 접근할 수 있는 구간
 - **상호 배제(Mutual Exclusion)**: 특정 프로세스가 공유 자원을 사용하고 있을 경우 다른 프로세스가 해당 공유 자원을 사용하지 못하게 제어하는 기법
 - **Lock:** 운영체제에서 지원하는 mutual exclusion을 보장하게 해주는 API. Critical section 내의 코드를 single atomic instruction 처럼 실행해 줌
-    - Lock을 구현하기 위해서는 보통 하드웨어의 도움을 받는다 (atomic instruction)
+    - Lock을 구현하기 위해서는 보통 하드웨어의 도움을 받는다
+    - **Atomic instruction**: 하드웨어에서 보장하는 실행 도중 다른 instruction이 끼어들지 않도록 보장하는 명령. 원자와 같이 쪼개지지 않는다는 의미에서 atomic instruction이라 부른다.
+        - 대표작인 예시로 TAS(TestAndSet)과 CAS(CompareAndSwap)이 있다.
         - `while (TAS(&lock->flag, 1) == 1)`나 `while (CAS(&lock->flag, 0, 1) == 1)`로 spin lock을 구현할 수 있음
 
 ```c
@@ -224,7 +227,7 @@ int CompareAndSwap(int *ptr, int expected, int new) {
 
 - 두 개 이상의 작업이 서로 상대방의 작업이 끝나기 만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태
 - 식사하는 철학자들 문제 (**Dining Philosophers Problem**)
-    - 원을 두르고 철학자들이 앉아 있고, 각자의 옆에 포크가 하나씩 있을 때, 양 옆의 포크를 모두 들어야 음식을 먹을 수 있다. 이 때 각각의 철학자가 오른쪽의 포크를 동시에 들면 아무도 음식을 먹을 수 없지 못하며 무한정 상대방을 기다리는 교착상태에 빠지는 문제
+    - 원을 두르고 철학자들이 앉아 있고, 각자의 옆에 포크가 하나씩 있을 때, 양 옆의 포크를 모두 들어야 음식을 먹을 수 있다. 이 때 각각의 철학자가 왼쪽과 오른쪽의 포크를 동시에 들면 아무도 음식을 먹을 수 없지 못하며 무한정 상대방을 기다리는 교착상태에 빠지는 문제
 - **발생 조건 (4가지 모두 해당되어야 함)**
     1. Mutual Exclusion: 점유한 자원에 대해서 쓰레드는 독점권(exclusive control)을 갖는다
     2. Hold-and-wait: 쓰레드가 자원을 점유 한 동안 다른 쓰레드는 이를 기다린다

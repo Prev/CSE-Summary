@@ -7,7 +7,7 @@
 - 포인터를 이용해서 자료를 연속적으로 저장하는 방식
 - 시간 복잡도 (Time Complexity)
     - 검색: `O(n)`
-    - 삽입/삭제: `O(n)`
+    - 삽입/삭제: `O(1)`
 
 
 
@@ -25,7 +25,7 @@
 
 ### ✔️ **트리 (Tree)**
 
-- Cycle이 없는 그래프
+- **Cycle이 없는 그래프**
 - 용어
     - Degree(차수): 노드 별 자식의 수, 혹은 트리의 경우 차수 중 가장 큰 수
     - Terminal Node(단말 노드; Leaf Node): 차수가 0인 노드
@@ -46,7 +46,7 @@
 
 
 
-### ✔️ 이진 검색 트리 (Binary Search Tree; BST)
+### ✔️ 이진 탐색 트리 (Binary Search Tree; BST)
 
 - **조건**
     - 노드 왼쪽에 있는 모든 서브트리의 값은 노드 값보다 작음
@@ -54,6 +54,7 @@
 - **시간 복잡도 (Time Complexity)**
     - 검색: `O(log n)`
     - 삽입/삭제: `O(log n)`
+    - 단, balance가 맞지 않으면 최악의 경우에 `O(n)`의 시간복잡도를 가짐
 - **삽입**
     - 위치를 찾아가며 빈 위치에 넣으면 됨
 - **삭제**
@@ -72,7 +73,7 @@
 - 배열로 표현 가능
     - 부모가 `n[i]`일 때 왼쪽 자식은 `n[i*2]`, 오른쪽 자식은 `n[i*2+1]`
 - **삽입**
-    - 가장 마지막에 (n[n.len])에 노드 삽입 후, 위 방향으로 percolating 수행
+    - 가장 마지막에 (`n[n.len]`)에 노드 삽입 후, 위 방향으로 percolating 수행
 
 ![Heap insertion](images/heap-insert.png)
 
@@ -85,10 +86,13 @@ void percolateDown(int[] A, int i, int N) {
     int rightChild = 2 * i + 1;
     if (child >= N)
         return;
-    if (rightChild < N && A[rightChild] < A[child]) // Min-heap
+    if (rightChild < N && A[rightChild] < A[child])
         child = rightChild;
-    swap(A[i], A[child]);
-    percolateDown(A, child, N);
+
+    if (A[i] > A[child]) { // Min-heap
+        swap(A[i], A[child]);
+        percolateDown(A, child, N);
+    }
 }
 ```
 
@@ -171,8 +175,7 @@ void percolateDown(int[] A, int i, int N) {
     - 평균 시간복잡도: O(nlog n), 최악 시간복잡도: O(n<sup>2</sup>)
     - ⚠️ 최악의 경우(Worst Case)
         - 리스트가 잘 나눠지지 않는 경우 (피벗이 최대값, 혹은 최솟값으로 뽑혀서 리스트가 나누어지지 않고 길이만 1씩 줄어드는 경우)
-    - ⁉️ In-place algorithm이라고 할 수도 있고, 그렇지 않다고 할 수도 있다
-        - O(log n) 만큼의 space를 필요로 하며, 최악의 경우에 O(n)까지도 필요하다.
+    - ✅ In-place algorithm임
 
 
 
@@ -192,7 +195,8 @@ void percolateDown(int[] A, int i, int N) {
     - BFS를 기본으로 한다
     - 큐에 있는 vertex들을 하나씩 꺼내며 이웃들의 최단경로를 갱신해준다
         - `dist[v] = min(dist[v], dist[u] + edge[u][v])`
-    - ❗️큐에서 vertex를 꺼낼 때에는 가장 짧은 최단 경로를 가진 놈을 먼저 꺼내도록 한다
+    - ❗️큐에서 vertex를 꺼낼 때에는 최단 경로를 가진 vertex를 먼저 꺼내도록 한다
+        - Min-Heap을 이용하여 구현하면 쉽게 구현 가능
 - 기본 시간복잡도: O(V<sup>2</sup> + E)
 
 ```js
