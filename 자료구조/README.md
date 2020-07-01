@@ -1,6 +1,5 @@
-# 자료구조 & 알고리즘
+# 📔 자료구조
 
-## 📔 자료구조
 
 ### ✔️ 연결 리스트 (Linked List)
 
@@ -138,101 +137,10 @@ void percolateDown(int[] A, int i, int N) {
     - 방법 3: Extendible hashing
         - Directory 구조로 해시 테이블을 구성하는 방식
 
-
-
-## ⏳ 알고리즘
-
-### ✔️ 정렬
-
-- **버블 정렬 (Bubble Sort)**
-    - 서로 인접한 2개의 레코드를 비교하여 크기가 순서대로 되어 있지 않으면 swap
-    - 1회전시 d[1]와 d[2], d[3]와 d[4], ... d[n-1]와 d[n]를 비교한다
-    - k회전시 n-k+1번 까지만 비교를 수행하면 된다
-    - O(n<sup>2</sup>)
-- **선택 정렬 (Selection Sort)**
-    - 해당 순서에 원소를 넣을 위치는 이미 정해져 있고, 어떤 원소를 넣을지 선택하는 알고리즘
-    - k회전시 k ~ n번째 레코드들을 보아야 한다.
-    - O(n<sup>2</sup>)
-- **삽입 정렬 (Insertion Sort)**
-    - 2번째 레코드부터 앞의 레코드들을 보며 자신이 위치해야 할 곳으로 삽입 하면서 정렬한다
-    - k번째 레코드는 1~(k-1)번째 레코드들과 비교해야한다
-    - O(n<sup>2</sup>)
-- **합병 정렬 (Merge Sort)**
-    - 대표적인 분할 정복(divide and conquer) 방법
-    - 원소의 크기가 1이 될 때까지 두개로 분할한 후, 2개의 리스트의 값들을 처음부터 하나씩 비교하여 두 개의 리스트의 값 중에서 더 작은 값을 새로운 리스트(sorted)로 옮긴다.
-    - O(n<sup>2</sup>)
-    - ❌ In-place algorithm(제자리 알고리즘)이 아니다; `O(n)`만큼의 새로운 공간 요구
-- **힙 정렬 (Heap Sort)**
-    - 배열의 요소로 max heap을 build 하고, 하나씩 요소를 꺼내서 배열의 뒤부터 저장하면 된다. (별도 공간 불필요)
-    - O(nlog n)
-    - ✅ In-place algorithm임
-- **퀵 정렬 (Quick Sort)**
-    - 개념
-        - 리스트 안의 한 요소를 고르고, 이를 피벗(pivot)이라 한다. 피벗을 기준으로 작은 요소들은 피벗 왼쪽으로 보내고, 큰 요소들은 오른쪽으로 보낸다
-        - 피벗을 제외한 왼쪽 리스트와 오른쪽 리스트 각각에 대해 위 작업을 반복한다.
-    - 구현 방법
-        - `low` 포인터와 `high` 포인터를 두고, low는 오른쪽으로 이동하다가 피벗보다 큰 요소를 찾으면 멈춘다. high는 왼쪽으로 이동하다가 피벗보다 작은 요소를 찾으면 멈춘다. 두 포인터 모두 멈추면 교환하고, 두 포인터가 엇갈릴 때까지 반복한다.
-    - 평균 시간복잡도: O(nlog n), 최악 시간복잡도: O(n<sup>2</sup>)
-    - ⚠️ 최악의 경우(Worst Case)
-        - 리스트가 잘 나눠지지 않는 경우 (피벗이 최대값, 혹은 최솟값으로 뽑혀서 리스트가 나누어지지 않고 길이만 1씩 줄어드는 경우)
-    - ✅ In-place algorithm임
-
-
-
-### ✔️ BFS와 DFS
-
-- **BFS(너비 우선 탐색; Breadth-first search)**
-    - 큐(queue)를 이용하여 탐색을 수행한다
-- **DFS(깊이 우선 탐색; Depth-first search)**
-    - 스택(stack)이나 재귀 함수(혹은 순환 호출)를 이용하여 탐색을 수행한다
-
-
-
-### ✔️ 다익스트라 (Dijkstra)
-
-- 출발점(source)이 명시되어있고, 각 노드까지의 최단 경로를 구하는 알고리즘
-- 개념
-    - BFS를 기본으로 한다
-    - 큐에 있는 vertex들을 하나씩 꺼내며 이웃들의 최단경로를 갱신해준다
-        - `dist[v] = min(dist[v], dist[u] + edge[u][v])`
-    - ❗️큐에서 vertex를 꺼낼 때에는 최단 경로를 가진 vertex를 먼저 꺼내도록 한다
-        - Min-Heap을 이용하여 구현하면 쉽게 구현 가능
-- 기본 시간복잡도: O(V<sup>2</sup> + E)
-
-```js
-dist[source] ← 0
-create vertex set Q
-
-for each vertex v in Graph:
-  dist[v] ← INFINITY  // 소스에서 v까지의 아직 모르는 길이
-	prev[v] ← UNDEFINED  // 소스에서 최적 경로의 이전 꼭짓점
-	add v to Q  // 모든 노드는 초기에 Q에 속해있다 (미방문 집합)
-
-dist[source] ← 0  // 소스에서 소스까지의 길이
-
-while Q is not empty:
-	u ← vertex in Q with min dist[u] // 최소 거리를 갖는 꼭짓점을 가장 먼저 선택한다
-	remove u from Q
-
-	for each neighbor v of u:           // v는 여전히 Q에 있다.
-		alt ← dist[u] + length(u, v)
-		if alt < dist[v]:               // v 까지의 더 짧은 경로를 찾았을 때
-			dist[v] ← alt
-			prev[v] ← u
-
-return dist[], prev[]
-```
-
-
-
-
-
 ---
 
 ### 참고 자료
 
 - 한양대학교 자료구조론 수업 강의자료, 노미나 교수 (CSE2010)
   - 교재 - Fundamentals of Data Structures in C 2/e, Horowitz 외
-- 한양대학교 알고리즘 수업 강의자료, 박희진 교수 (ITE2039)
-  - 교재 - Introduction to Algorithms 3/e, T Cormen, C 외
 - https://gmlwjd9405.github.io
