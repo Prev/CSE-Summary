@@ -40,7 +40,7 @@
 
 ### ✔️ Framing
 
-- 물리 데이터를 frame 단위로 끊기 위해서는 first bit이랑 last bit의 결정이 핗요함
+- 물리 데이터를 frame 단위로 끊기 위해서는 first bit이랑 last bit의 결정이 필요함
 - `SYN`과 `ETX` flag로 프레임의 시작과 끝을 알림
     - ⚠️ Body부분에 ETX와 같은 바이트가 나타나면 도중에 프레임이 끝난 것으로 오인할 수 있다.
         - → Byte-oriented: Escape character를 ETX byte 앞에 붙여서 전송
@@ -61,8 +61,8 @@
     - 데이터를 어떤 divisor로 나눈 다음 그 나머지를 data 뒤에 붙여서 전송
     - Receiver측에서는 data + CRC를 같은 divisor로 나누어 나머지가 0인지 확인
     - CRC는 algebraic polynomial로 표현됨
-    - CRC-16은 divisor가 17bits이며 HDLC에 사용
-    - CRC-32은 divisor가 33bits이며 LAN에 사용
+    - CRC-16은 divisor가 17-bit 이며 HDLC에 사용
+    - CRC-32은 divisor가 33-bit 이며 LAN에 사용
 
 ![CRC](./images/crc.png)
 
@@ -99,15 +99,15 @@
     3. Low delay
     4. Fault tolerant
 - Random Access Protocols
-    - **CSMA (Carrier SenseMultiple Access)**
-        - **Carrier Sensing:** 전송 전에 매체가 사용중인지 확인
+    - **CSMA** (Carrier Sense Multiple Access)
+        - Carrier Sensing: 전송 전에 매체가 사용중인지 확인
         - ⚠️ 감지 타이밍에는 매체가 비어있어도 그 이후 프레임이 도착해 충돌할 수 있다: 전파지연(propagation delay)가 존재하기 때문
-    - **CSMA/CD (Carrier SenseMultiple Access with Collision Detection)**
+    - **CSMA/CD** (Carrier Sense Multiple Access with **Collision Detection**)
         - 유선 Ethernet에서 사용
         - Binary Back-off 알고리즘
             - 충돌 발견시마다 jamming signal 전송 후 K ← K + 1
             - (0 ~ 2<sup>K</sup> - 1사이의 랜덤한 수) * (maximum propagation time or average transmission time) 만큼 기다린다
-    - **CSMA/CA (Carrier SenseMultiple Access with Collision Avoidance)**
+    - **CSMA/CA** (Carrier SenseMultiple Access with **Collision Avoidance**)
         - 충돌 감지가 어려운 무선 네트워크에서 사용
         - 채널이 idle 상태라고 여겨져도 잠시 기다린 뒤 전송을 진행
 - Controlled Access Protocols

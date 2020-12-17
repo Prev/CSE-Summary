@@ -27,6 +27,7 @@
         - → `CPI` 감소
 - **CISC (Complex Instruction Set Computer)**
     - 상황에 따라 가장 compact 한 instruction 사용
+        - 가상으로 예를 들자면 CISC는 'multiply' instruction을 제공하지만 RISC는 여러 개의 `add` instruction을 사용하여 컴파일
     - 메모리 공간을 적게 차지한다는 이점 → 현재에 와서는 공간에 대한 제약이 적기에 큰 의미 X
     - `IC` 감소, `CPI*cct` 증가
 
@@ -97,7 +98,7 @@ beq $s1, $s2 label // 이때 destination(target address)은 `PC + offset * 4` �
     4. 작업 수행
     5. 결과를 저장하여 calling procedure (호출자)가 그 값을 받을 수 있도록 함 (`$v0 - $v1`)
     6. Caller로 돌아가기 위해 PC 변경 (jump register - `$ra`)
-- Caller saving & Caller saving
+- **Caller saving & Caller saving**
     - 레지스터에 있는 caller 데이터를 지워야 할 수도 있다.
     - Caller saving
         - Procedure 호출 전에 caller가 저장해두는 것
