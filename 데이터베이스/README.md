@@ -102,10 +102,10 @@
 ### ✔️ 관계 대수
 
 - SELECT 연산
-    - `σc(R)`
+    - <code>σ<sub>c</sub>(R)</code>
     - 조건 c를 만족하는 투플들의 집합을 선택
 - PROJECT 연산
-    - `πL(R)`
+    - <code>π<sub>L</sub>(R)</code>
     - 리스트 L에 명시된 애트리뷰트들만 선택
 - 집합 연산
     - `∪, ∩, -, ×`
@@ -114,17 +114,20 @@
         - {a, b} x {1, 2, 3}
         = {(a, 1), (a, 2), (a, 3), (b, 1), (b,2), (b, 3)}
         - 조인 연산과 같은 결과를 낼 수 있음
-        - ALL_PRODUCT ← DEPARTMENT×EMPLOYEE
-        􏰀DEPT_MGR ← σMGRSSN=SSN ALL_PRODUCT
-        RESULT ← πDNAME,FNAME,LNAME(DEPT_MGR)
+        - 예시
+            - ALL_PRODUCT ← DEPARTMENT × EMPLOYEE
+            - DEPT_MGR ← σ<sub>MGRSSN=SSN</sub> ALL_PRODUCT
+            - RESULT ← π<sub>DNAME,FNAME,LNAME</sub>(DEPT_MGR)
 - 조인 연산
-    - DEPT_MGR ← DEPARTMENT×MGRSSN=SSN EMPLOYEE 􏰀 RESULT ← πDNAME,FNAME,LNAME(DEPT_MGR)
+    - 예시
+        - DEPT_MGR ← DEPARTMENT ×<sub>MGRSSN=SSN</sub> EMPLOYEE
+        - RESULT ← π<sub>DNAME,FNAME,LNAME</sub>(DEPT_MGR)
     - 세타 조인 (THETA JOIN): 두 테이블에 대한 카티션 프로덕트 연산 후, SELECT 연산을 적용하는 것과 동일한 효과
     - 동등 조인 (EQUI JOIN): 조인 조건인 c에서 사용되는 연산자가 동등 비교 연산자인 경우
     - 자연 조인 (NATURAL JOIN, `*`): 조인의 결과에서 나타나는 중복되는 조인 애트리뷰들 중 하나를 최종 결과에서 삭제
         - ex) EMPLOYEE의 이름과 그가 일하는 DEPARTMENT의 이름을 검색하라
-        - TMP ← EMPLOYEE *DEPARTMENT
-        - RESULT ← πFNAME,LNAME,DNAME(TMP)
+        - TMP ← EMPLOYEE * DEPARTMENT
+        - RESULT ← π<sub>FNAME,LNAME,DNAME</sub>(TMP)
 
 ### ✔️ SQL
 

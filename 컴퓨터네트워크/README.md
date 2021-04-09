@@ -46,7 +46,7 @@
         - → Byte-oriented: Escape character를 ETX byte 앞에 붙여서 전송
         - → Bit-oriented: **Bit Stuffing**을 이용하여 해결 (1이 연속되어 5개 나타나면 0하나 붙여서 전송하고, 반대로 receiver 쪽에서는 1이 5개 연속되어 나타나면 다음 비트 무시)
 
-![Ethernet Frame](./images/ethernet-frame.png)
+    <img src="./images/ethernet-frame.png" alt="Ethernet Frame" width="800">
 
 
 ### ✔️ Error Detection
@@ -64,7 +64,7 @@
     - CRC-16은 divisor가 17-bit 이며 HDLC에 사용
     - CRC-32은 divisor가 33-bit 이며 LAN에 사용
 
-![CRC](./images/crc.png)
+    <img src="./images/crc.png" alt="CRC" width="700">
 
 - **Checksum**
     - Sender가 1의 보수를 취해 전송하면 Receiver 측에서는 checksum을 포함한 모든 비트가 0이 되는지 확인
@@ -77,17 +77,17 @@
     - 한 번에 frame을 하나씩 보내는 방식 (Sliding Window 존재 X)
     - 💡 **Piggybacking**: sender와 receiver가 서로 데이터를 주고받는 경우라면 data frame에 ACK 정보를 함께 실어 보내는 method
 
-![Stop & Wait ARQ](./images/stop-and-wait-arq.png)
+    <img src="./images/stop-and-wait-arq.png" alt="Stop & Wait ARQ" width="800">
 
 - **Go-Back-N ARQ**
     - 어떤 프레임 하나가 손상되거나 도착하지 않은 경우 ACK를 받은 마지막 frame부터 모든 프레임을 재전송
 
-![Go-back-N ARQ](./images/go-back-n-arq.png)
+    <img src="./images/go-back-n-arq.png" alt="Go-back-N ARQ" width="800">
 
 - **Selective Repeat ARQ**
     - 손상되거나 사라진 프레임만 재전송
 
-![Selective-Repeat ARQ](./images/selective-repeat-arq.png)
+    <img src="./images/selective-repeat-arq.png" alt="Selective-Repeat ARQ" width="800">
 
 
 
@@ -138,8 +138,7 @@
         - Routing table에 `port - label` 형태로 매핑 (incoming / outgoing 따로)
         - → Setup와 teardown 존재, 일종의 **virtual circuit**을 만드는 개념
 
-
-![Packet Swtiching / connection-oriented](./images/tcp-swtiching-connection-oriented.png)
+    <img src="./images/tcp-swtiching-connection-oriented.png" alt="Packet Swtiching / connection-oriented" width="700">
 
 ### ✔️ IP Address
 
@@ -165,7 +164,7 @@
 - 헤더는 20~60바이트의 크기임
 - ⚠️ Checksum은 header에 대해서만 해줌 (데이터는 전송 계층에서 처리)
 
-![IP Datagram format](./images/ip-datagram-format.png)
+<img src="./images/ip-datagram-format.png" alt="IP Datagram format" width="500">
 
 
 ### ✔️ ARP (Address Resolution Protocol)
@@ -189,14 +188,14 @@
 
 ### ✔️ TCP (Transmission Control Protocol)
 
-![TCP segment format](./images/tcp-segment-format.png)
+<img src="./images/tcp-segment-format.png" alt="TCP segment format" width="500">
 
 - **Three-way handshaking**
     - SYN → SYN+ACK → ACK의 순서로 커넥션 수림
     - FIN → ACK → FIN → ACK의 순서로 커넥션 종료
     - 동시에 (simultaneous) 커넥션 수립 시 SYN / SYN → SYN+ACK / SYN+ACK 2번만에 수립 됨
 
-![TCP Connection Flow](./images/tcp-connection.png)
+<img src="./images/tcp-connection.png" alt="TCP Connection Flow and Three-way handshaking" width="600">
 
 
 - **Flow Control**
@@ -213,15 +212,15 @@
         5. Filled: Gap이 다시 채워지면 ACK 전송
         6. 중복 데이터가 들어오면 ACK를 바로 전송
 
-![TCP Error Control](./images/tcp-error-control.png)
+<img src="./images/tcp-error-control.png" alt="TCP Error Control" width="800">
 
 - **Congestion Control**
     - Slow Start: 천천히 시작해서 exponentially하게 증가함
     - Congestion Avoidance: 천천히 증가시키다가 congestion 발생시 줄여나감
 
-![TCP congestion control](./images/tcp-congestion-control.png)
+<img src="./images/tcp-congestion-control.png" alt="TCP congestion control" width="650">
 
-![TCP congestion control example](./images/tcp-congestion-control-example.png)
+<img src="./images/tcp-congestion-control-example.png" alt="TCP congestion control example" width="650">
 
 
 

@@ -26,4 +26,4 @@
 
 [![CC BY-NC](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.svg)](https://creativecommons.org/licenses/by-nc/4.0/deed.ko)
 
-원저작물의 저작자를 밝히고 저작물을 비상업적 용도로 이용하는 한, 리믹스, 변경하거나 재가공하는 것을 허락합니다. &copy; Copyrights github.com/Prev 2019-2020
+원저작물의 저작자를 밝히고 저작물을 비상업적 용도로 이용하는 한, 리믹스, 변경하거나 재가공하는 것을 허락합니다. &copy; Copyrights github.com/Prev 2019-2021

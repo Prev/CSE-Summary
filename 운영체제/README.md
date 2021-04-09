@@ -127,7 +127,7 @@ struct proc {
     - ⚠️ Address space를 여러 개로 나눠 사용할 수 없다 (Code / Data / Stack)
     - ⚠️ 프로세스 간 메모리 공유가 힘들다 (Code 영역, 쓰레드간)
 
-![Base & Bound registers](images/mem-base-and-bound.png)
+    ![Base & Bound registers](images/mem-base-and-bound.png)
 
 - **Segmentation**
     - Address space를 세그먼트들로 나눈다 (code, stack, heap)
@@ -138,7 +138,7 @@ struct proc {
         - **External:** 청크(세그먼트) 사이의 빈 공간 존재
         - **Internal:** 세그먼트 크기 만큼의 메모리가 필요하지 않을 수 있음
 
-![Segmentation](images/mem-segmentation.png)
+        <img src="images/mem-segmentation.png" alt="Segmentation" width="700">
 
 - **페이징 (Paging)**
     - 프로세스 주소를 쪼개는 대신, 물리적 메모리 주소 자체를 고정된 크기로 쪼개어 사용.
@@ -164,9 +164,7 @@ struct proc {
         - x86: 4-level로 구성 (32bits의 주소 = 9 bits + 9 bits + 9 bits + 9 bits + 12 bits offsets)
             - 때문의 페이지의 크기는 2<sup>12</sup> = 4KB 이다.
 
-
-![Paging](images/mem-paging.png)
-
+        ![Paging](images/mem-paging.png)
 
 
 ### ✔️ 페이지 교체 (Page Swap)
