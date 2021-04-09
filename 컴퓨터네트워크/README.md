@@ -29,18 +29,17 @@
 
 - 주파수 분할 다중화(FDM)
     - 주파수를 특정 길이만큼 쪼개어 나눠 사용하는 방식
-    - 주파수 사이에는 간섭 방지를 위한 guard band가 필요
+    - 주파수 사이에는 간섭 방지를 위한 가드 밴드(guard band)가 필요
 - 시분할 다중화(TDM)
 - 코드 분할 다중화(CDM)
-
-
+- 파장분할 다중화(WDM)
 
 
 ## 2️⃣ 데이터 링크 계층 (Data Link Layer)
 
 ### ✔️ Framing
 
-- 물리 데이터를 frame 단위로 끊기 위해서는 first bit이랑 last bit의 결정이 필요함
+- 물리 데이터를 frame 단위로 끊기 위해서는 first bit과 last bit의 결정이 필요함
 - `SYN`과 `ETX` flag로 프레임의 시작과 끝을 알림
     - ⚠️ Body부분에 ETX와 같은 바이트가 나타나면 도중에 프레임이 끝난 것으로 오인할 수 있다.
         - → Byte-oriented: Escape character를 ETX byte 앞에 붙여서 전송
@@ -52,7 +51,7 @@
 ### ✔️ Error Detection
 
 - **VRC** (Vertical Redundancy Check)
-    - 7비트 + 1 패리티 비트로 구성 (ex. ASCII)
+    - 7비트 + 1 [패리티 비트](https://ko.wikipedia.org/wiki/패리티_비트)로 구성 (ex. ASCII)
     - ex) 1110111**0** 1110111**0** 1110111**0** 1110110**1**
 - **LRC** (Longitudinal Redundancy Check)
     - VRC에 마지막에 row parities로 구성된 바이트 추가 (BBC; block control character)
@@ -101,7 +100,7 @@
 - Random Access Protocols
     - **CSMA** (Carrier Sense Multiple Access)
         - Carrier Sensing: 전송 전에 매체가 사용중인지 확인
-        - ⚠️ 감지 타이밍에는 매체가 비어있어도 그 이후 프레임이 도착해 충돌할 수 있다: 전파지연(propagation delay)가 존재하기 때문
+        - ⚠️ 감지 타이밍에는 매체가 비어있어도 그 이후 프레임이 도착해 충돌할 수 있다: 전파지연(propagation delay)이 존재하기 때문
     - **CSMA/CD** (Carrier Sense Multiple Access with **Collision Detection**)
         - 유선 Ethernet에서 사용
         - Binary Back-off 알고리즘
@@ -183,17 +182,20 @@
 
 - 프로세스간 통신을 위해 포트를 제공
 - 8바이트 헤더로 고정 (Source **port** number, Destination **port** number, total length, checksum 각각 2바이트씩)
+- TCP와 비교하여 적은 기능과 신뢰성 보유, 하지만 빠른 속도로 동작하여 데이터 유실에도 큰 상관이 없는 경우에 주로 사용
 
 
 
 ### ✔️ TCP (Transmission Control Protocol)
 
+- 신뢰성있는 통신을 위해 Flow Control, Error Control, Congestion Control 등을 수행
+
 <img src="./images/tcp-segment-format.png" alt="TCP segment format" width="500">
 
 - **Three-way handshaking**
-    - SYN → SYN+ACK → ACK의 순서로 커넥션 수림
-    - FIN → ACK → FIN → ACK의 순서로 커넥션 종료
-    - 동시에 (simultaneous) 커넥션 수립 시 SYN / SYN → SYN+ACK / SYN+ACK 2번만에 수립 됨
+    - `① SYN` → `② SYN+ACK` → `③ ACK`의 순서로 커넥션 수림
+    - `① FIN` → `② ACK` → `③ FIN` → `④ ACK`의 순서로 커넥션 종료
+    - 동시에 (simultaneous) 커넥션 수립 시 `① SYN / SYN` → `② SYN+ACK / SYN+ACK` 2번 만에 수립 가능
 
 <img src="./images/tcp-connection.png" alt="TCP Connection Flow and Three-way handshaking" width="600">
 

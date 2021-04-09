@@ -24,7 +24,7 @@
 
 ### ✔️ **트리 (Tree)**
 
-- **Cycle이 없는 그래프**
+- **Cycle이 없는 그래프** ⭐️
 - 용어
     - Degree(차수): 노드 별 자식의 수, 혹은 트리의 경우 차수 중 가장 큰 수
     - Terminal Node(단말 노드; Leaf Node): 차수가 0인 노드
@@ -61,7 +61,7 @@
     - 자식이 둘 있으면 오른쪽 자식의 서브트리 중 가장 작은 값으로 교체하고, 해당 노드 다시 삭제
         - 가장 작은 값은 가장 왼쪽에 있는 값이며, 이 노드는 자식이 하나 이하 있음이 보장됨
 
-![BST deletion](images/bst-delete.png)
+    <img src="images/bst-delete.png" alt="BST deletion" width="600">
 
 
 
@@ -74,7 +74,7 @@
 - **삽입**
     - 가장 마지막에 (`n[n.len]`)에 노드 삽입 후, 위 방향으로 percolating 수행
 
-![Heap insertion](images/heap-insert.png)
+    ![Heap insertion](images/heap-insert.png)
 
 - **삭제 (pop; delete min)**
     - 가장 마지막의 노드를 첫 번째로 옮긴 후 아래 방향으로 percolating 수행

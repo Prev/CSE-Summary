@@ -2,7 +2,7 @@
 
 ### ✔️ 컴퓨터 성능을 결정하는 요소
 
-![CPUTime = CPUClockCycles * ClockCycleTime \\ = InstructionCount * CyclePerInstruction * cct](images/math/cputime.png)
+<img src="images/math/cputime.png" alt="CPUTime = CPUClockCycles * ClockCycleTime \\ = InstructionCount * CyclePerInstruction * cct" width="550">
 
 - **IC** (Instruction Count)
     - 하드웨어가 실행해야 하는 instuction의 실제 수
@@ -35,7 +35,7 @@
 
 ### ✔️ Amdahl's Law
 
-![T_{improved} = {T_{affected} \over improvementfactor} + T_{unaffected}](images/math/amdahls_law.png)
+<img src="images/math/amdahls_law.png" alt="T_{improved} = {T_{affected} \over improvementfactor} + T_{unaffected}" width="550">
 
 
 - 자주 쓰이는 곳에 투자를 해야 효과가 있음(make common case faster)을 의미
@@ -71,7 +71,7 @@ add $t0, $s1, $s2
 | constant | -2<sup>15</sup> ~ 2<sup>15</sup> - 1 |
 | address | offset added to base address in `rs`  |
 
-```c
+```asm
 lw $t0, 32($s2)
 sw $t0, 16($s3)
 addi $s3, $s3, 4
@@ -165,7 +165,7 @@ beq $s1, $s2 label // 이때 destination(target address)은 `PC + offset * 4` �
 
 ### ✔️ Cache Memeory
 
-![T_{average} = hitrate * T_{cacheAccess} + (1 - hitrate) * T_{diskAccess}](images/math/cache_access_time.png)
+<img src="images/math/cache_access_time.png" alt="T_{average} = hitrate * T_{cacheAccess} + (1 - hitrate) * T_{diskAccess}" width="600">
 
 - Cache write의 2가지 방법
     - **write-through**

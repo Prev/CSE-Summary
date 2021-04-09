@@ -110,27 +110,27 @@ dist[source] := 0
 create vertex set Q
 
 for each vertex v in Graph:
-  dist[v] := INFINITY  // 소스에서 v까지의 아직 모르는 길이
-	prev[v] := UNDEFINED  // 소스에서 최적 경로의 이전 꼭짓점
-	add v to Q  // 모든 노드는 초기에 Q에 속해있다 (미방문 집합)
+    dist[v] := INFINITY  // 소스에서 v까지의 아직 모르는 길이
+    prev[v] := UNDEFINED  // 소스에서 최적 경로의 이전 꼭짓점
+    add v to Q  // 모든 노드는 초기에 Q에 속해있다 (미방문 집합)
 
 dist[source] := 0  // 소스에서 소스까지의 길이
 
 while Q is not empty:
-	u := vertex in Q with min dist[u] // 최소 거리를 갖는 꼭짓점을 가장 먼저 선택한다
-	remove u from Q
+    u := vertex in Q with min dist[u] // 최소 거리를 갖는 꼭짓점을 가장 먼저 선택한다
+    remove u from Q
 
-	for each neighbor v of u:           // v는 여전히 Q에 있다.
-		alt := dist[u] + length(u, v)
-		if alt < dist[v]:               // v 까지의 더 짧은 경로를 찾았을 때
-			dist[v] := alt
-			prev[v] := u
+    for each neighbor v of u:           // v는 여전히 Q에 있다.
+        alt := dist[u] + length(u, v)
+        if alt < dist[v]:               // v 까지의 더 짧은 경로를 찾았을 때
+            dist[v] := alt
+            prev[v] := u
 
 return dist[], prev[]
 ```
 
 
-### ✔️ 탐욕 알고리즘 (Greedy Algorithms)
+### ✔️ 탐욕 알고리즘 (Greedy Algorithm)
 
 - 최적해를 구하는 데에 사용되는 근사적인 방법으로, 여러 경우 중 하나를 결정해야 할 때마다 그 순간에 최적이라고 생각되는 것을 선택해 나가는 방식으로 진행하여 최종적인 해답에 도달하는 방법
 - **최소 신장 트리 (Minimum Spanning Tree)**

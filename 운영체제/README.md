@@ -32,17 +32,17 @@
 
 ```c
 struct proc {
-	char *mem; // Start of process memory
-	uint sz; // Size of process memory
-	char *kstack; // Bottom of kernel stack for this process
-	enum proc_state state; // Process state
-	int pid; // Process ID
-	struct proc *parent; // Parent process
-	int killed;
-	struct file *ofile[NOFILE]; // Open files
-	struct inode *cwd; // / Current directory
-	struct context context; // // Switch here to run process
-	struct trapframe *tf; // // Trap frame for the current interrupt
+    char *mem; // Start of process memory
+    uint sz; // Size of process memory
+    char *kstack; // Bottom of kernel stack for this process
+    enum proc_state state; // Process state
+    int pid; // Process ID
+    struct proc *parent; // Parent process
+    int killed;
+    struct file *ofile[NOFILE]; // Open files
+    struct inode *cwd; // / Current directory
+    struct context context; // // Switch here to run process
+    struct trapframe *tf; // // Trap frame for the current interrupt
 }
 ```
 
@@ -142,7 +142,7 @@ struct proc {
 
 - **페이징 (Paging)**
     - 프로세스 주소를 쪼개는 대신, 물리적 메모리 주소 자체를 고정된 크기로 쪼개어 사용.
-    - 이때 쪼개지는 단위를 **페이지(page)**라 함
+    - 이때 쪼개지는 단위를 <strong>페이지(page)</strong>라 함
     - **페이지 테이블(page table)**
         - Virtual address를 physical address로 치환하기 위한 요소
         - 프로세스마다 페이지 테이블을 갖고 있어야 함
@@ -207,16 +207,16 @@ struct proc {
 
 ```c
 int TestAndSet(int *ptr, int new) {
-	int old = *ptr; // fetch old value at ptr
-	*ptr = new; // store ‘new’ into ptr
-	return old; // return the old value
+    int old = *ptr; // fetch old value at ptr
+    *ptr = new; // store ‘new’ into ptr
+    return old; // return the old value
 }
 
 int CompareAndSwap(int *ptr, int expected, int new) {
-	int actual = *ptr;
-	if (actual == expected)
-		*ptr = new;
-	return actual;
+    int actual = *ptr;
+    if (actual == expected)
+        *ptr = new;
+    return actual;
 }
 ```
 
