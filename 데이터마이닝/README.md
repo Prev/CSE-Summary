@@ -4,7 +4,7 @@
 
 ### ✔️ 공통 개념 및 용어
 
-- **벡터 (Vector)**
+- **벡터 (Vector)**  
     <img src="images/math/vector.png" alt="Vector" width="260">
 - **평균과 분산 (Mean and variance)**  
     <img src="images/math/mean-and-variance.png" alt="Mean and variance" width="220">  
@@ -13,35 +13,34 @@
       <img src="images/math/rmse.jpg" alt="MRSE" width="230">
     - 위 수식에서 ŷ 은 예측 값(predicted), y는 실제 값(actual)을 의미한다
 - **거리/유사도 (Distance/Similarity)**
-- 거리 함수(**metric** function)의 만족 조건
-  
-  1. **Positive definiteness** (구분 불가능한 점의 동일성): `d(i, j) if i ≠ j, and d(i, i) = 0`
-    2. **Symmetry** (대칭성): `d(i,j) = d(j,i)`
-    3. **Triangle Inequality** (삼각 부등식): `d(i,j) ≤ d(i,k) + d(k,j)`
-  
-- **유클리디언 거리 (Euclidean distance)**  
-    <img src="images/math/euclidean-distance.png" alt="Minkowski distance" width="280">
-  
-- **맨해튼 거리 (Manhattan distance)**  
-    <img src="images/math/manhattan-distance.png" alt="Minkowski distance" width="280">
-  
-- **민코프스키 거리 (Minkowski distance)**  
-    <img src="images/math/minkowski-distance.png" alt="Minkowski distance" width="280">
-  - 맨해튼 거리와 유클리디언 거리는 민코프스키 거리의 특별한 유형이다 (각각 h=1, h=2)
-  
+  - 거리 함수(**metric** function)의 만족 조건
+    
+    1. **Positive definiteness** (구분 불가능한 점의 동일성): `d(i, j) if i ≠ j, and d(i, i) = 0`
+      2. **Symmetry** (대칭성): `d(i,j) = d(j,i)`
+      3. **Triangle Inequality** (삼각 부등식): `d(i,j) ≤ d(i,k) + d(k,j)`
+    
+  - **유클리디언 거리 (Euclidean distance)**  
+      <img src="images/math/euclidean-distance.png" alt="Euclidean distance" width="240">
+    
+  - **맨해튼 거리 (Manhattan distance)**  
+      <img src="images/math/manhattan-distance.png" alt="Manhattan distance" width="240">
+    
+  - **민코프스키 거리 (Minkowski distance)**  
+      <img src="images/math/minkowski-distance.png" alt="Minkowski distance" width="240">
+    - 맨해튼 거리와 유클리디언 거리는 민코프스키 거리의 특별한 유형이다 (각각 h=1, h=2)
+    
   - **코사인 유사도 (Cosine Similarity)**  
-  <img src="images/math/cosine-similarity.png" alt="Consine similarity" width="400">
+  <img src="images/math/cosine-similarity.png" alt="Consine similarity" width="320">
   
     - 두 벡터가 이루는 각도를 통해 유사도(거리) 측정
   - 각도가 적을 수록 유사도가 높으며, 각이 클수록 유사도가 작음
     - 벡터의 크기는 값에 아무런 영향을 미치지 않음
   
   - **Jaccard Similarity (자카드 유사도)**  
-  <img src="images/math/jaccard-similarity.png" alt="Jaccard similarity" width="380">
+  <img src="images/math/jaccard-similarity.png" alt="Jaccard similarity" width="320">
   
     - 자카드 계수(Jaccard coefficient) 또는 자카드 지수(Jaccard index)라고도 함
   - 0과 1 사이의 값을 가지며, 두 집합이 동일하면 1의 값을 가지고, 공통의 원소가 하나도 없으면 0의 값을 가짐  
-
 
 
 ### ✔️ 분류 (Classification)
@@ -81,7 +80,7 @@
       - 통계적 방법으로 information gain이 증가하는 방향으로 조건(A)을 선택  
       <img src="images/math/information-gain.png" alt="Entropy and gain equation" width="450">
 
-      - Entropy대신 Gini index가 사용되기도 함  
+      - Entropy대신 Gini index가 사용되기도 함  
       <img src="images/math/gini-index.png" alt="gini index equation" width="230">
 
 - **베이즈 정리 (Bayes' Theorm)**  
@@ -111,7 +110,7 @@
   - 단순 선형 회귀와 **최소제곱법 (least squares)**
     - eq(1)은 단순 선형 회귀 모델을, eq(2)와 eq(3)은 최소제곱법을 의미
     - 최소제곱법: 점들로부터 거리들의 제곱의 합이 최소가 되게 하는 선을 구하는 모델  
-    <img src="images/math/linear-regression.jpg" alt="Linear regression" width="350">
+    <img src="images/math/linear-regression.jpg" alt="Linear regression" width="300">
 
 - **서포트 벡터 머신 (Support Vector Machine, SVM)**
   
@@ -170,24 +169,27 @@
 
 - **정규화 (Normalization)**
   - Min-max normalization  
-  <img src="images/math/minmax_norm.png" alt="Min-max normalization" width="200">
+  <img src="images/math/minmax_norm.png" alt="Min-max normalization" width="170">
+
   - Z-score(standard) normalization  
-  <img src="images/math/std-norm.png" alt="Standard normalization" width="150">
+  <img src="images/math/std-norm.png" alt="Standard normalization" width="120">
 
 - **상관 분석 (Correlation Analysis)**
   - 두 변수 간에 어떤 비선형적 관계를 갖고 있는지를 분석하는 방법  
     <img src="images/correlation-analysis.png" alt="orrelation-analysis" width="550">
   
   - 피어슨 상관 계수 (Pearson Correlation Coefficient, PCC)  
-  <img src="images/math/pearson-correlation-coefficient.png" alt="pearson-correlation-coefficient" width="350">
+  <img src="images/math/pearson-correlation-coefficient.png" alt="pearson-correlation-coefficient" width="320">
 
   - 카이제곱 분석 (Chi-squared test, χ<sup>2</sup>-test)  
-  <img src="images/math/chi-square-test.png" alt="chi-square-test" width="300">
+  <img src="images/math/chi-square-test.png" alt="chi-square-test" width="280">
+
     - 값이 클 수록 두 변수간에 상관 관계가 크다
   
 - **Curse of dimensionality**
-  - 차원(dimension)이 커지면 데이터 분포가 희소(sparse) 해지며, 희소한 데이터는 점들 간의 밀도(density)와 거리(distance)의 의미를 희석시켜 분석을 어렵게 만듦
-  - 데이터 전처리 과정 중에 **차원 축소(dimensionality reduction)**를 수행하여 데이터를 더 처리하기 용이하게 만들 수 있음
+  - 차원(dimension)이 커지면 데이터 분포가 희소(sparse)해지며, 희소한 데이터는 점들 간의 밀도(density)와 거리(distance)의 의미를 희석시켜 분석을 어렵게 만듦
+  - 데이터 전처리 과정 중에 **차원 축소(dimensionality reduction)** 를 수행하여 데이터를 더 처리하기 용이하게 만들 수 있음
+
 - **PCA (Principal Component Analysis, 주성분 분석)**
     - 차원 축소를 위한 대표적인 알고리즘
     - 분산을 최대한 보존하면서 서로 직교하는 새로운 축을 찾아 고차원 공간의 표본들을 선형 연관성이 없는 저차원 공간으로 변환하는 기법
@@ -197,7 +199,7 @@
         3. 고유 값이 큰 순서대로 고유 벡터를 정렬하면 중요한 순서대로 주 성분을 구할 수 있다 (reduced dimension matrix)
     - 공분산 행렬 (Σ)  
       <img src="images/math/covariance-matrix.png" alt="covariance-matrix" width="230">
-    - 고유 벡터와 고유 값(eigenvector and eigenvalue)  
+    - 고유 벡터와 고유 값 (eigenvector and eigenvalue)  
       <img src="images/math/eigenvector.png" alt="eigenvector" width="180">
       - e가 고유 벡터, λ가 고유 값이다
 
@@ -217,11 +219,13 @@
   - Damping factor(`d`)를 포함한 정확한 수식은 아래와 같으며, PageRank가 수렴할 때까지 iteration을 반복하며 계산할 수 있음  
     <img src="images/math/pagerank.png" alt="pagerank equation" width="460">
     - Damping factor: 어떤 마구잡이로 웹서핑을 하는 사람이 그 페이지에 만족을 못 하고 다른 페이지로 가는 링크를 클릭할 확률. 논문에서는 0.85로 설정
+
 - **HITS (hyperlink-induced topic search)**
 
   - Hubs and Authorities
     - Authorities: 인용을 잘 **받는** 페이지
     - Hubs: 인용을 잘 **하는** 페이지
+
   - PageRank와 마찬가지로 수렴할 때까지 iteration을 반복하며 계산  
     <img src="images/math/hit.jpg" alt="hit algorithm equation" width="370">
 
