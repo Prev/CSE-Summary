@@ -16,10 +16,9 @@
 ### ✔️ 거리/유사도 (Distance/Similarity)
 
 - 거리 함수(**metric** function)의 만족 조건
-  
   1. **Positive definiteness** (구분 불가능한 점의 동일성): `d(i, j) if i ≠ j, and d(i, i) = 0`
-    2. **Symmetry** (대칭성): `d(i,j) = d(j,i)`
-    3. **Triangle Inequality** (삼각 부등식): `d(i,j) ≤ d(i,k) + d(k,j)`
+  2. **Symmetry** (대칭성): `d(i,j) = d(j,i)`
+  3. **Triangle Inequality** (삼각 부등식): `d(i,j) ≤ d(i,k) + d(k,j)`
   
 - **유클리디언 거리 (Euclidean distance)**  
     <img src="images/math/euclidean-distance.png" alt="Euclidean distance" width="240">
@@ -29,28 +28,28 @@
   
 - **민코프스키 거리 (Minkowski distance)**  
     <img src="images/math/minkowski-distance.png" alt="Minkowski distance" width="240">
-  - 맨해튼 거리와 유클리디언 거리는 민코프스키 거리의 특별한 유형이다 (각각 h=1, h=2)
+  - 맨해튼 거리와 유클리디언 거리는 민코프스키 거리의 특별한 유형이다 (각각 `h=1`, `h=2`)
   
 - **코사인 유사도 (Cosine Similarity)**  
-<img src="images/math/cosine-similarity.png" alt="Consine similarity" width="320">
+    <img src="images/math/cosine-similarity.png" alt="Consine similarity" width="320">
 
   - 두 벡터가 이루는 각도를 통해 유사도(거리) 측정
-- 각도가 적을 수록 유사도가 높으며, 각이 클수록 유사도가 작음
+  - 각도가 적을 수록 유사도가 높으며, 각이 클수록 유사도가 작음
   - 벡터의 크기는 값에 아무런 영향을 미치지 않음
 
 - **Jaccard Similarity (자카드 유사도)**  
-<img src="images/math/jaccard-similarity.png" alt="Jaccard similarity" width="320">
+    <img src="images/math/jaccard-similarity.png" alt="Jaccard similarity" width="320">
 
   - 자카드 계수(Jaccard coefficient) 또는 자카드 지수(Jaccard index)라고도 함
-- 0과 1 사이의 값을 가지며, 두 집합이 동일하면 1의 값을 가지고, 공통의 원소가 하나도 없으면 0의 값을 가짐  
+  - 0과 1 사이의 값을 가지며, 두 집합이 동일하면 1의 값을 가지고, 공통의 원소가 하나도 없으면 0의 값을 가짐  
 
 
 ## 분류 (Classification)
 
 ### ✔️ Classification 과 Prediction
 
-  - **Classification**: Discrete/nominal한 결과를 출력 (클래스의 수가 정해져 있다). 맞거나 틀리거나 둘 중 하나의 결과만이 있다.
-  - **Prediction**: 연속적인(continuous) 결과를 출력. 얼마나 틀렸는지(오차, error)도 알 수 있다.
+  - **Classification**: Discrete/nominal한 결과를 출력 (클래스의 수가 정해져 있다). 맞거나 틀리거나 둘 중 하나의 결과만이 있음
+  - **Prediction**: 연속적인(continuous) 결과를 출력. 얼마나 틀렸는지(오차, error)도 알 수 있음
 
 
 ### ✔️ Supervised vs Unsupervised Learning
@@ -73,7 +72,7 @@
 
 ### ✔️ 의사결정트리 (Decision Tree)
 
-<img src="images/decision-tree.png" alt="Decision Tree" width="300">
+  <img src="images/decision-tree.png" alt="Decision Tree" width="300">
 
 - Non-terminal 노드에는 조건이 위치하며, Terminal 노드에는 label이 위치
 
@@ -91,7 +90,7 @@
 
 
 ### ✔️ 베이즈 정리 (Bayes' Theorm)
-<img src="images/math/bayes.png" alt="Bayes' equation" width="220">
+  <img src="images/math/bayes.png" alt="Bayes' equation" width="220">
 
 - P(A), P(B), P(B|A)를 알 때 P(A|B)를 구할 수 있음
 - 용어 정리
@@ -102,7 +101,7 @@
 
 ### ✔️ 나이브 베이즈 분류 (Naïve Bayes Classification)
 
-<img src="images/math/naive-bayes.png" alt="Bayes' equation" width="220">
+  <img src="images/math/naive-bayes.png" alt="Bayes' equation" width="220">
 
 - 베이즈 정리를 이용한 분류법
 - x는 속성 벡터이고, C<sub>i</sub> 는 임의의 클래스이다.
@@ -111,10 +110,9 @@
 
 ### ✔️ 선형 회귀 (Linear Regression)
 
-  <img src="images/linear-regression.jpg" alt="Linear regression" width="350">
+<img src="images/linear-regression.jpg" alt="Linear regression" width="350">
 
 - 두 데이터(독립 변수 X, 종속 변수 Y) 간의 선형 상관관계를 모델링 하는 기법
-
 - 단순 선형 회귀와 **최소제곱법 (least squares)**
   - eq(1)은 단순 선형 회귀 모델을, eq(2)와 eq(3)은 최소제곱법을 의미
   - 최소제곱법: 점들로부터 거리들의 제곱의 합이 최소가 되게 하는 선을 구하는 모델  
@@ -185,6 +183,7 @@
 ## 데이터 전처리 (Data Preprocessing)
 
 ### ✔️ 정규화 (Normalization)
+
 - Min-max normalization  
 <img src="images/math/minmax_norm.png" alt="Min-max normalization" width="170">
 
@@ -193,14 +192,15 @@
 
 
 ### ✔️ 상관 분석 (Correlation Analysis)
+
 - 두 변수 간에 어떤 비선형적 관계를 갖고 있는지를 분석하는 방법  
   <img src="images/correlation-analysis.png" alt="orrelation-analysis" width="550">
 
 - 피어슨 상관 계수 (Pearson Correlation Coefficient, PCC)  
-<img src="images/math/pearson-correlation-coefficient.png" alt="pearson-correlation-coefficient" width="320">
+  <img src="images/math/pearson-correlation-coefficient.png" alt="pearson-correlation-coefficient" width="320">
 
 - 카이제곱 분석 (Chi-squared test, χ<sup>2</sup>-test)  
-<img src="images/math/chi-square-test.png" alt="chi-square-test" width="280">
+  <img src="images/math/chi-square-test.png" alt="chi-square-test" width="280">
 
   - 값이 클 수록 두 변수간에 상관 관계가 크다
   
@@ -243,7 +243,6 @@
 - Hubs and Authorities
   - Authorities: 인용을 잘 **받는** 페이지
   - Hubs: 인용을 잘 **하는** 페이지
-
 - PageRank와 마찬가지로 수렴할 때까지 iteration을 반복하며 계산  
   <img src="images/math/hit.jpg" alt="hit algorithm equation" width="370">
 
