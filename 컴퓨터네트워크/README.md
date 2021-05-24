@@ -188,7 +188,7 @@
 
 ### ✔️ TCP (Transmission Control Protocol)
 
-- 신뢰성있는 통신을 위해 Flow Control, Error Control, Congestion Control 등을 수행
+- 신뢰성(reliable), 순서 보장(ordered), 오류 검증(error-checked)을 제공하는 프로토콜
 
 <img src="./images/tcp-segment-format.png" alt="TCP segment format" width="500">
 
